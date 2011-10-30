@@ -1,13 +1,5 @@
-var cradle = require('cradle');
-
-var host   = "http://carritoz.couchone.com",
-    port   = 80,
-    dbname = "arjs",
-    user   = "malaniz",
-    pass   = "w4rW4llopHHHack",
-    conn   = new (cradle.Connection)(host, port, 
-        {cache:true, raw: false, auth: {username:user, password:pass}}),
-    users  = conn.database(dbname);
+var db = require('./dbconf'),
+    users = db.doc;
 
 exports.findOrCreateUserData = function(data, promise) {
   users.view('docs/twitterId', { key: data.id_str }, function(err, doc) {

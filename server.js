@@ -8,9 +8,7 @@ var express   = require('express'),
     util      = require('util'),
     Promise   = everyauth.Promise,
     users     = require('./resources/users');
-
     app = module.exports = express.createServer(),
-
     port = 8765;
 
 
@@ -49,6 +47,13 @@ app.get('/', function(req, res){
     title: 'Javascript Argentina'
   });
 });
+
+app.get('/', function(req, res){
+  res.render('index', {
+    title: 'Javascript Argentina'
+  });
+});
+
 
 everyauth.helpExpress(app);
 app.listen(port);
